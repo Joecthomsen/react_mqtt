@@ -88,7 +88,7 @@ function App() {
         <div className="app-wrapper">
             <div className="content">
                 <h1>The amazing temperature app</h1>
-                <h2>Temperature: {msg.length === 0 ? "Awaiting data..." : msg} degree celsius</h2>
+                <h2>Temperature: {msg.length === 0 ? "Awaiting data..." : msg.slice(0, 5) + " degree celsius"}</h2>
             </div>
             <LineChart className="chart" width={600} height={300} data={tempArray}>
                 <Line type="monotone" dataKey="temp" stroke="#8884d8" />
