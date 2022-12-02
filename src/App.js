@@ -9,7 +9,7 @@ function App() {
     const [tempArray, setTempArray] = useState([])
     const [sliderValue, setSliderValue] = useState(24)
     const [setPoint, setSetPoint] = useState(sliderValue)
-    const URL = 'wss://192.168.0.124';
+    const URL = 'wss://192.168.240.102';
 
     const publishOptions = {
         protocol: 'ws',
@@ -58,12 +58,12 @@ function App() {
                     "time": Date(),
                     "temp": arr.toString()}
                 ])
-                console.log("msg received!!! " + tempArray.toString())
+                console.log("msg received, new temperature: " + payload.toString() + " on topic: " + topic)
             }
         })
 
-        client.on('packetsend', function (topic, payload){
-            console.log("Send messages with topic: " + topic + " and payload: "  + payload)
+        client.on('packetsend', function (){
+            console.log("Send messages with set point " + sliderValue)
         })
 
     },[setPoint]);
